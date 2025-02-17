@@ -1,1 +1,1 @@
-# epostix-go
+# Epostix API Golang client
