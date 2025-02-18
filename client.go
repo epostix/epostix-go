@@ -24,7 +24,7 @@ func (c *client) SendEmail(ctx context.Context, domainName string, emailCreate *
 		return nil, err
 	}
 
-	finalURL := fmt.Sprintf("%s/%s/emails", domainName, baseURL)
+	finalURL := fmt.Sprintf("%s/%s/emails", baseURL, domainName)
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodPost, finalURL, bytes.NewReader(b))
 	if err != nil {
