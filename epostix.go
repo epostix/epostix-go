@@ -6,7 +6,7 @@ import (
 )
 
 type Client interface {
-	SendEmail(ctx context.Context, emailCreate *EmailCreate) (*Email, error)
+	SendEmail(ctx context.Context, domainName string, emailCreate *EmailCreate) (*Email, error)
 }
 
 type Options struct {

@@ -18,13 +18,15 @@ type client struct {
 	options Options
 }
 
-func (c *client) SendEmail(ctx context.Context, emailCreate *EmailCreate) (*Email, error) {
+func (c *client) SendEmail(ctx context.Context, domainName string, emailCreate *EmailCreate) (*Email, error) {
 	b, err := json.Marshal(emailCreate)
 	if err != nil {
 		return nil, err
 	}
 
-	req, err := http.NewRequestWithContext(ctx, http.MethodPost, baseURL+"/emails", bytes.NewReader(b))
+	finalURL := fmt.Sprintf("%s/%s/emails", domainName, baseURL)
+
+	req, err := http.NewRequestWithContext(ctx, http.MethodPost, finalURL, bytes.NewReader(b))
 	if err != nil {
 		return nil, err
 	}
